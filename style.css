@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+:root {
+    --primary-color: darkred;
+    --secondary-color: red;
+    --tertiarty-color: orange;
+    --text-color: #353535;
+    --background-color: #cecece;
+    --weak-color: rgb(200, 0, 0);
+    --medium-color: rgb(255, 165, 0);
+    --strong-color: rgb(0, 150, 0);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,16 +18,24 @@
 }
 
 body {
-    /* font-family: Arial, sans-serif; */
     font-family: 'Inter', 'Arial', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    background-color: #cecece;
-    /* color: darkred; */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiarty-color), var(--background-color));
+    color: #353535;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 1rem;
+}
+
+.container {
+    background-color: #cecece64;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
 }
