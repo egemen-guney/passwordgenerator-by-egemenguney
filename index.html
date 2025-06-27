@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="Password Generator by Egemen Güney - Generate strong passwords!">
+    <meta name="keywords" content="password, generator, strong">
+    <meta name="author" content="Egemen Güney">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="apple-icon" href="images/icons/apple-touch-icon.png" type="image/x-icon">
+    <link rel="icon" href="images/icons/android-chrome-192x192.png" type="image/png" sizes="192x192">
+    <link rel="icon" href="images/icons/android-chrome-512x512.png" type="image/png" sizes="512x512">
+    <title>Password Generator by Egemen Güney</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator by <span class="name-highlight">Egemen Güney</span></h1>
+        
+        <!--- PASSWORD -->
+        <div class="password-container">
+            <input type="text" id="password" readonly>
+            <i class="far fa-copy" id="copy-button" title="Copy to clipboard"></i>
+        </div>
+
+        <!-- OPTIONS -->
+        <div class="options">
+            <!-- LENGTH-->
+            <div class="option">
+                <label for="length">Password Length</label>
+                <input type="range" id="length" value="16" min="8" max="32">
+                <span id="length-value">16</span>
+            </div>
+            <!-- UPPERCASE -->
+            <div class="option">
+                <label for="uppercase">Include Uppercase</label>
+                <input type="checkbox" id="uppercase" checked>
+            </div>
+            <!-- LOWERCASE -->
+            <div class="option">
+                <label for="lowercase">Include Lowercase</label>
+                <input type="checkbox" id="lowercase" checked>
+            </div>
+            <!-- SYMBOLS -->
+            <div class="option">
+                <label for="symbols">Include Symbols</label>
+                <input type="checkbox" id="symbols" checked>
+            </div>
+            <!-- NUMBERS -->
+            <div class="option">
+                <label for="numbers">Include Numbers</label>
+                <input type="checkbox" id="numbers" checked>
+            </div>
+        </div>
+
+        <!-- GENERATE BUTTON -->
+        <button id="generate-button"><i class="fas fa-key"></i>Generate Password</button>
+
+        <!-- STRENGTH -->
+         <div class="strength-container">
+            <p>Password Strength: <span id="strength-level">Medium</span></p>
+            <div class="strength-bar">
+                <div class="strength"><!-- strength bar--></div>
+            </div>
+         </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
