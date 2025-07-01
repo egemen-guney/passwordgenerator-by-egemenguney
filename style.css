@@ -224,7 +224,7 @@ button:active {
 }
 
 #strength-level {
-    color: var(--primary-color);
+    color: #353535;
     font-weight: 600;
 }
 
