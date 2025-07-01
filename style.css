@@ -3,8 +3,8 @@
 :root {
     --primary-color: darkred;
     --secondary-color: red;
-    --tertiarty-color: orange;
-    --text-color: #353535;
+    --tertiary-color: orange;
+    --text-color: #515151;
     --background-color: #cecece;
     --weak-color: rgb(200, 0, 0);
     --medium-color: rgb(255, 165, 0);
@@ -22,7 +22,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiarty-color), var(--background-color));
+    background: linear-gradient(to top, var(--primary-color), var(--secondary-color), var(--background-color));
     color: #353535;
     display: flex;
     justify-content: center;
@@ -32,10 +32,232 @@ body {
 }
 
 .container {
-    background-color: #cecece64;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    max-width: 600px;
+    background-color: #cececeae;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 2.5rem;
+    max-width: 450px;
+    width: 90%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 67%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.name-highlight {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.password-container {
+    margin-bottom: 24px;
+    background-color: #cecece8a;
+    border-radius: 10px;
+    border: 1px solid #8f8f8f;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 0 0;
+}
+
+#password {
     width: 100%;
+    border: none;
+    background: transparent;
+    padding: 1.1rem;
+    padding-right: 50px;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 0.68rem;
+}
+
+#copy-button {
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.1rem; 
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#copy-button:hover {
+    color: var(--primary-color);
+}
+
+.options {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #cecece8a;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.option:last-child {
+    margin-bottom: 0;
+}
+
+.option label {
+    font-size: 0.9rem;
+    color: #353535;
+    font-weight: 500;
+}
+
+.range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 54%;
+}
+
+input[type="range"] {
+    accent-color: var(--primary-color);
+    height: 6px;
+    cursor: pointer;
+    flex: 1;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--primary-color);
+    appearance: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: all 0.3s;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '\2714'; /* Checkmark character */
+    position: absolute;
+    color: var(--background-color);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+#length-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    width: 30px;
+    background-color: #cecece8a;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to top, var(--primary-color), var(--secondary-color));
+    color: var(--background-color);
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 1.25rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.strength-container {
+    margin-top: 0.8rem;
+}
+
+.strength-container p {
+    font-size: 0.9rem;
+    color: #353535;
+    padding: 0 6px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+#strength-level {
+    color: var(--medium-color);
+    font-weight: 600;
+}
+
+.strength-bar {
+    height: 8px;
+    background-color: var(--background-color);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.strength {
+    height: 100%;
+    width: 0;
+    min-width: 5%;
+    background-color: var(--weak-color);
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 1.8rem;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .option label {
+        font-size: 0.85rem;
+    }
 }

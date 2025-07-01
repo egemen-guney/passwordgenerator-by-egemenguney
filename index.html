@@ -24,7 +24,7 @@
         
         <!--- PASSWORD -->
         <div class="password-container">
-            <input type="text" id="password" readonly>
+            <input type="text" id="password" readonly value="YOURSECUREPASSWORDWILLAPPEARHERE">
             <i class="far fa-copy" id="copy-button" title="Copy to clipboard"></i>
         </div>
 
@@ -33,8 +33,10 @@
             <!-- LENGTH-->
             <div class="option">
                 <label for="length">Password Length</label>
-                <input type="range" id="length" value="16" min="8" max="32">
-                <span id="length-value">16</span>
+                <div class="range-container">
+                    <input type="range" id="length" value="16" min="8" max="32">
+                    <span id="length-value">16</span>
+                </div>
             </div>
             <!-- UPPERCASE -->
             <div class="option">
@@ -59,7 +61,7 @@
         </div>
 
         <!-- GENERATE BUTTON -->
-        <button id="generate-button"><i class="fas fa-key"></i>Generate Password</button>
+        <button id="generate-button"><i class="fas fa-key"></i> Generate Password</button>
 
         <!-- STRENGTH -->
          <div class="strength-container">
