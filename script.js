@@ -21,7 +21,25 @@ lengthSlider.addEventListener("input", () => {
     lengthValue.textContent = lengthSlider.value;
 });
 
+copyButton.addEventListener("click", () => {
+    if(!passwordVal.value) return; // nothing to copy
+
+    navigator.clipboard.writeText(passwordVal.value)
+    .then(() => copySucceed())
+    .catch((error) => alert("Could not copy to clipboard. Please try again.", error));
+});
+
 generateButton.addEventListener("click", makePassword);
+
+function copySucceed() {
+    copyButton.classList.remove("far", "fa-copy");
+    copyButton.classList.add("fas", "fa-check"); 
+
+    setTimeout(() => {
+        copyButton.classList.remove("fas", "fa-check");
+        copyButton.classList.add("far", "fa-copy");
+    }, 1500);
+}
 
 function makePassword() {
     const length = Number(lengthSlider.value);
@@ -95,3 +113,6 @@ function updateStrengthBar(password) {
     strengthText.style.color = strengthColor;
     strengthBar.style.backgroundColor = strengthColor;
 }
+
+// DEFAULT BEHAVIOUR ON REFRESH
+window.addEventListener("DOMContentLoaded", makePassword);
