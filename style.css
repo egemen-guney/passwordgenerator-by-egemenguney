@@ -242,7 +242,7 @@ button:active {
     width: 0;
     min-width: 10%;
     background-color: var(--weak-color);
-    transition: width 0.3s ease;
+    transition: all 0.3s ease;
     border-radius: 5px;
 }
 
