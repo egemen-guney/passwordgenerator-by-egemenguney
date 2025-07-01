@@ -115,4 +115,4 @@ function updateStrengthBar(password) {
 }
 
 // DEFAULT BEHAVIOUR ON REFRESH
-window.addEventListener("DOMContentLoaded", makePassword);
+// window.addEventListener("DOMContentLoaded", makePassword);
