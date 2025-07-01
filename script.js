@@ -27,6 +27,8 @@ copyButton.addEventListener("click", () => {
     navigator.clipboard.writeText(passwordVal.value)
     .then(() => copySucceed())
     .catch((error) => alert("Could not copy to clipboard. Please try again.", error));
+
+    console.log("Copied password to clipboard.")
 });
 
 generateButton.addEventListener("click", makePassword);
@@ -55,7 +57,7 @@ function makePassword() {
 
     const newPassword = generatePassword(length, useUppercase, useLowercase, useSymbols, useNumbers);
     passwordVal.value = newPassword;
-    updateStrengthBar(newPassword);
+    updateStrengthBar(newPassword, useUppercase, useLowercase, useSymbols, useNumbers);
 }
 
 function generatePassword(length, useUppercase, useLowercase, useSymbols, useNumbers) {
@@ -75,38 +77,50 @@ function generatePassword(length, useUppercase, useLowercase, useSymbols, useNum
     return password;
 }
 
-function updateStrengthBar(password) {
+function updateStrengthBar(password, useUppercase, useLowercase, useSymbols, useNumbers) {
     const length = password.length;
-    const hasUppercase = /[A-Z]/.test(password);
-    const hasLowercase = /[a-z]/.test(password);
-    const hasSymbols = /[!@#$%^&*()-_=+[\]{}|;:,.<>?]/.test(password);
-    const hasNumbers = /[0-9]/.test(password);
+    
+    // DOES NOT WORK!
+    // const hasUppercase = /[A-Z]/.test(password);
+    // const hasLowercase = /[a-z]/.test(password);
+    // const hasSymbols = /[!@#$%^&*()-_=+[\]{}|;:,.<>?]/.test(password);
+    // const hasNumbers = /[0-9]/.test(password);
 
     let strength = 0;
-    strength += Math.min(length * 1.5, 40); // check logic later
-    if (hasUppercase) strength += 17;
-    if (hasLowercase) strength += 17;
-    if (hasSymbols) strength += 17;
-    if (hasNumbers) strength += 9;
+    // strength += Math.min(length * 1.5, 40); // check logic later
+    strength += length; // updated logic. keeping above line for future ref.
 
-    if (length < 9) strength = Math.min(strength, 40);
+    if (useUppercase) strength += 19;
+    if (useLowercase) strength += 19;
+    if (useSymbols) strength += 20;
+    if (useNumbers) strength += 10;
 
-    const strengthBound = Math.max(15, Math.min(strength, 100));
+    if (length < 9 && strength < 20) strength = Math.min(strength, 10);
+    else if (length < 9) strength = Math.min(strength, 35);
+
+    const strengthBound = Math.max(10, Math.min(strength, 100));
 
     strengthBar.style.width = strengthBound + "%";
 
     let strengthLevel = "";
     let strengthColor = "";
 
-    if (strength <= 40) { // weak
+    // 0-25 25-40 40-60 60-75 75-100
+    if (strength < 25) { // very weak
+        strengthLevel = "Very Weak";
+        strengthColor = "#8b0000";
+    } else if (strength < 40) { // weak
         strengthLevel = "Weak";
         strengthColor = "#c80000";
-    } else if (strength <= 70) { // medium
-        strengthLevel = "Medium";
+    } else if (strength < 60) { // moderate 
+        strengthLevel = "Moderate";
         strengthColor = "#ffa500";
-    } else { // strong
+    } else if (strength < 75) { // strong
         strengthLevel = "Strong";
-        strengthColor = "#009600";
+        strengthColor = "#00d300";
+    } else { // very strong
+        strengthLevel = "Very Strong";
+        strengthColor = "#009600"
     }
 
     strengthText.textContent = strengthLevel;
