@@ -8,12 +8,12 @@ const symbolsCheckbox = document.getElementById("symbols");
 const numbersCheckbox = document.getElementById("numbers");
 const generateButton = document.getElementById("generate-button");
 const strengthBar = document.querySelector(".strength");
-const strengthText = document.querySelector(".strength-level");
+const strengthText = document.getElementById("strength-level");
 
 // OPTIONS
 const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-const symbolChars = "!@#$%^&*()-_=+[]{}|;:,.<>?/";
+const symbolChars = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 const numberChars = "0123456789";
 
 // FUNC.S
@@ -55,4 +55,43 @@ function generatePassword(length, useUppercase, useLowercase, useSymbols, useNum
     }
 
     return password;
+}
+
+function updateStrengthBar(password) {
+    const length = password.length;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasSymbols = /[!@#$%^&*()-_=+[\]{}|;:,.<>?]/.test(password);
+    const hasNumbers = /[0-9]/.test(password);
+
+    let strength = 0;
+    strength += Math.min(length * 1.5, 40); // check logic later
+    if (hasUppercase) strength += 17;
+    if (hasLowercase) strength += 17;
+    if (hasSymbols) strength += 17;
+    if (hasNumbers) strength += 9;
+
+    if (length < 9) strength = Math.min(strength, 40);
+
+    const strengthBound = Math.max(15, Math.min(strength, 100));
+
+    strengthBar.style.width = strengthBound + "%";
+
+    let strengthLevel = "";
+    let strengthColor = "";
+
+    if (strength <= 40) { // weak
+        strengthLevel = "Weak";
+        strengthColor = "#c80000";
+    } else if (strength <= 70) { // medium
+        strengthLevel = "Medium";
+        strengthColor = "#ffa500";
+    } else { // strong
+        strengthLevel = "Strong";
+        strengthColor = "#009600";
+    }
+
+    strengthText.textContent = strengthLevel;
+    strengthText.style.color = strengthColor;
+    strengthBar.style.backgroundColor = strengthColor;
 }
