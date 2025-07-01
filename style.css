@@ -83,13 +83,13 @@ h1::after {
     width: 100%;
     border: none;
     background: transparent;
-    padding: 1.1rem;
+    padding: 1rem;
     padding-right: 50px;
     color: var(--text-color);
     letter-spacing: 1px;
     outline: none;
     border-radius: 10px;
-    font-size: 0.68rem;
+    font-size: 0.63rem;
 }
 
 #copy-button {
